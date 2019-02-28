@@ -12,10 +12,8 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 import cz.lsvobo.demo.zonky.marketplace.ZonkyMarketPlaceApplication;
 import cz.lsvobo.demo.zonky.marketplace.client.api.MarketPlaceClient;
-import cz.lsvobo.demo.zonky.marketplace.client.api.model.Loan;
 import cz.lsvobo.demo.zonky.marketplace.client.rest.ZonkyMarketPlaceClientRestImpl;
 import cz.lsvobo.demo.zonky.marketplace.config.MarketPlaceConfig;
-import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,7 +49,7 @@ public class ZonkyMarketPlaceClientRestImplTest {
                 .andExpect(method(GET))
                 .andExpect(header("X-Order", "-datePublished"))
                 .andExpect(header("X-Size", "10"))
-                .andRespond(withSuccess(getClassPathResource("/marketPlaceLoans.json"), APPLICATION_JSON_UTF8));
+                .andRespond(withSuccess(getClassPathResource("/market-place-loans-response.json"), APPLICATION_JSON_UTF8));
 
         var response = client.readNewLoansByMaxAgeInMinutes(5, 10);
 
